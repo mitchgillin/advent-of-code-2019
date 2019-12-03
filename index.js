@@ -1,3 +1,3 @@
-console.log("Hello ever running Node.js project.");
+import {Day1B} from "./Day1/1A.js";
 
-console.log("Goodbye cruel world");
+console.log(Day1B());
