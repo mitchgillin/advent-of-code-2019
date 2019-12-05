@@ -10,10 +10,11 @@ const isValidPassword = number => {
     .split("")
     .map(num => parseInt(num));
   let repeating = false;
-  let repeatingValue;
+  let repeatingValues = [];
   for (let i = 0; i < numArray.length - 1; i++) {
     if (numArray[i] == numArray[i + 1]) {
       repeating = true;
+      repeatingValues.push(numArray[i], numArray[i + 1]);
     }
     if (numArray[i] > numArray[i + 1]) {
       return false;
@@ -23,7 +24,22 @@ const isValidPassword = number => {
     }
   }
 
-  return repeating;
+  let foo = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 };
+  for (let i = 0; i < repeatingValues.length; i++) {
+    foo[repeatingValues[i]] = foo[repeatingValues[i]] + 1;
+  }
+
+  const validEntries =
+    Object.entries(foo)
+      .map(pair => {
+        if (pair[1] === 2) {
+          return pair[0];
+        } else {
+          return null;
+        }
+      })
+      .filter(item => item != null).length > 0;
+  return validEntries > 0;
 };
 
 const Day4A = () => {
