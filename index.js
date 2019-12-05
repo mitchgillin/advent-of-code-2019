@@ -1,3 +1,3 @@
-import { Day2A, Day2B } from "./Day2/Day2.js";
+import { Day4A } from "./Day4/Day4.js";
 
-console.log(Day2B());
+console.log(Day4A());
